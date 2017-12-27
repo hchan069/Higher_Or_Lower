@@ -12,17 +12,21 @@ public class MainActivity extends AppCompatActivity {
 
     int ans;
 
+    public void makeToast(String string) {
+        Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+    }
+
     public void guessFunc(View view) {
 
         EditText guessNumEditText = findViewById(R.id.guessNumEditText);
         int guessNum = Integer.parseInt(guessNumEditText.getText().toString());
 
         if (guessNum < ans)
-            Toast.makeText(this, "Number is larger", Toast.LENGTH_SHORT).show();
+            makeToast("Number is larger.");
         else if (guessNum > ans)
-            Toast.makeText(this, "Number is smaller", Toast.LENGTH_SHORT).show();
+            makeToast("Number is smaller.");
         else {
-            Toast.makeText(this, "You guessed it. Try again!", Toast.LENGTH_SHORT).show();
+            makeToast("You guessed it. Try again!");
             Random rand = new Random();
             ans = rand.nextInt(20) + 1;
         }
